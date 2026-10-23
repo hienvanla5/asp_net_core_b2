@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Conventional Routing - About";
+}
+
+<h1>About</h1>
+<p>
+    Action này được gọi bởi URL <code>/conventional/about</code>.
+    Không có attribute route nào cả — chỉ có route pattern trong <code>Program.cs</code>
+    và quy ước: đoạn <code>about</code> chính là tên action <code>About</code>.
+</p>
+
+<p>URL hiện tại: <code>@Context.Request.Path</code></p>
+
+<a asp-controller="Routing" asp-action="Index">← Quay lại giải thích</a>

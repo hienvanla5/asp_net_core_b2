@@ -1,0 +1,13 @@
+@model Movie
+
+<div class="card h-100 mb-3">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@Model.Genre</h6>
+        <p class="card-text mb-2">
+            Ngày phát hành: @Model.ReleaseDate.ToString("dd/MM/yyyy")<br />
+            Giá: @Model.Price.ToString("0.00") USD
+        </p>
+        <span class="badge bg-secondary">Id: @Model.Id</span>
+    </div>
+</div>

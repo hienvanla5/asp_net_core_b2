@@ -1,0 +1,10 @@
+@model Buoi2.ViewComponents.MovieSummaryModel
+
+<div class="card border-primary mb-3">
+    <div class="card-header fw-bold">@Model.Heading</div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Số phim: <strong>@Model.MovieCount</strong></li>
+        <li class="list-group-item">Số thể loại: <strong>@Model.GenreCount</strong></li>
+        <li class="list-group-item">Tổng giá thuê: <strong>@Model.TotalPrice.ToString("0.00") USD</strong></li>
+    </ul>
+</div>

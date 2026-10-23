@@ -1,0 +1,49 @@
+@model IReadOnlyList<Movie>
+
+@{
+    ViewData["Title"] = "Partial View Demo";
+}
+
+<h1>Partial View</h1>
+<p>
+    Partial view là một file <code>.cshtml</code> không có layout, không tự chạy một mình.
+    Nó chỉ render HTML và nhận model do nơi gọi truyền vào.
+    Ở đây mỗi thẻ phim là partial <code>Views/Shared/_MovieCard.cshtml</code>.
+</p>
+
+<h2>Cách 1: tag helper &lt;partial&gt;</h2>
+<p>
+    <code>&lt;partial name="_MovieCard" model="movie" /&gt;</code> được gọi lặp lại
+    cho từng phần tử trong danh sách.
+</p>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-3">
+            <partial name="_MovieCard" model="movie" />
+        </div>
+    }
+</div>
+
+<hr />
+
+<h2>Cách 2: gọi bằng C#</h2>
+<p>
+    <code>@@await Html.PartialAsync("_MovieCard", Model[0])</code> cho kết quả giống hệt,
+    nhưng dùng API C# thay vì tag helper.
+</p>
+
+<div class="row">
+    <div class="col-md-3">
+        @await Html.PartialAsync("_MovieCard", Model[0])
+    </div>
+</div>
+
+<div class="alert alert-info">
+    <strong>Điểm cần nhớ:</strong> partial view chỉ là "mảnh HTML dùng lại".
+    Nó không có action riêng, nên muốn gọi nó qua URL thì phải có một action trả về
+    <code>PartialView()</code> (ví dụ dùng cho AJAX).
+</div>
+
+<a asp-action="Index">← Quay lại danh sách demo</a>

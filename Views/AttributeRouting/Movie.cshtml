@@ -1,0 +1,31 @@
+@model Movie?
+
+@{
+    ViewData["Title"] = "Attribute Routing - Movie";
+}
+
+<h1>Chi tiết phim</h1>
+<p>
+    URL <code>/attribute/movie/3</code> khớp với
+    <code>[HttpGet("movie/{id:int}")]</code>. Giá trị <code>3</code> được bind vào
+    tham số <code>int id</code>.
+</p>
+
+<p>URL hiện tại: <code>@Context.Request.Path</code></p>
+
+@if (Model is null)
+{
+    <div class="alert alert-warning">
+        Không tìm thấy phim có <strong>Id = @ViewData["RequestedId"]</strong>.
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <partial name="_MovieCard" model="Model" />
+        </div>
+    </div>
+}
+
+<a asp-controller="AttributeRouting" asp-action="Index">← Quay lại giải thích</a>

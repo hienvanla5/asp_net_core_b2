@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "View Component Demo";
+}
+
+<h1>View Component</h1>
+<p>
+    View component giống partial view nhưng có <strong>class C# đi kèm</strong>.
+    Class này xử lý logic (truy vấn, tính toán...) rồi trả về view.
+    Ở đây <code>MovieSummaryViewComponent</code> tự tính số phim, số thể loại và tổng giá.
+</p>
+
+<h2>Cách 1: gọi bằng C# trong Razor</h2>
+<pre><code>@@await Component.InvokeAsync("MovieSummary", new { heading = "Tổng quan (InvokeAsync)" })</code></pre>
+@await Component.InvokeAsync("MovieSummary", new { heading = "Tổng quan (InvokeAsync)" })
+
+<h2>Cách 2: gọi bằng tag helper</h2>
+<pre><code>&lt;vc:movie-summary heading="Tổng quan (tag helper)"&gt;&lt;/vc:movie-summary&gt;</code></pre>
+<vc:movie-summary heading="Tổng quan (tag helper)"></vc:movie-summary>
+
+<div class="alert alert-info">
+    <p class="mb-1"><strong>Quy ước tên file:</strong></p>
+    <ul class="mb-0">
+        <li>Class: <code>ViewComponents/MovieSummaryViewComponent.cs</code></li>
+        <li>View mặc định: <code>Views/Shared/Components/MovieSummary/Default.cshtml</code></li>
+        <li>Tên component khi gọi: <code>MovieSummary</code> (bỏ hậu tố <code>ViewComponent</code>)</li>
+        <li>Tag helper: <code>&lt;vc:movie-summary&gt;</code> (chuyển PascalCase thành kebab-case)</li>
+        <li>Để tag helper hoạt động, <code>Views/_ViewImports.cshtml</code> cần có <code>@@addTagHelper *, Buoi2</code></li>
+    </ul>
+</div>
+
+<a asp-action="Index">← Quay lại danh sách demo</a>

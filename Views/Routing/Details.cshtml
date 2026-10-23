@@ -1,0 +1,34 @@
+@model Movie?
+
+@{
+    ViewData["Title"] = "Conventional Routing - Details";
+}
+
+<h1>Chi tiết phim</h1>
+<p>
+    URL <code>/conventional/details/2</code> khớp với pattern
+    <code>conventional/{action=Index}/{id?}</code>.
+    Đoạn <code>2</code> được truyền vào tham số <code>id</code> của action
+    <code>Details(int id)</code>.
+</p>
+
+<p>URL hiện tại: <code>@Context.Request.Path</code></p>
+
+@if (Model is null)
+{
+    <div class="alert alert-warning">
+        Không tìm thấy phim có <strong>Id = @ViewData["RequestedId"]</strong>.
+        Nhưng action <code>Details</code> vẫn được gọi: routing chỉ quan tâm URL,
+        còn việc dữ liệu có tồn tại hay không là do code của bạn quyết định.
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <partial name="_MovieCard" model="Model" />
+        </div>
+    </div>
+}
+
+<a asp-controller="Routing" asp-action="Index">← Quay lại giải thích</a>

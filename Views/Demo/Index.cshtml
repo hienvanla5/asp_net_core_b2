@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Demo";
+}
+
+<h1>Demo ASP.NET Core MVC</h1>
+<p class="lead">Mỗi khái niệm có một trang demo riêng, kèm giải thích ngay trên trang.</p>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Partial View</h5>
+                <p class="card-text">
+                    File <code>.cshtml</code> dùng lại được, nhận model từ nơi gọi và render HTML.
+                    Không có class C# đi kèm.
+                </p>
+                <a class="btn btn-primary" asp-action="PartialViewDemo">Mở demo Partial View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">View Component</h5>
+                <p class="card-text">
+                    Giống partial view nhưng có class C# để xử lý logic (tính toán, truy vấn dữ liệu)
+                    trước khi render.
+                </p>
+                <a class="btn btn-primary" asp-action="ViewComponentDemo">Mở demo View Component</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Conventional Routing</h5>
+                <p class="card-text">
+                    Route khai báo một lần trong <code>Program.cs</code>;
+                    URL được ánh xạ tới controller/action theo quy ước.
+                </p>
+                <a class="btn btn-primary" href="/conventional">Mở demo Conventional Routing</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Attribute Routing</h5>
+                <p class="card-text">
+                    Route khai báo ngay trên controller/action bằng <code>[Route]</code>,
+                    <code>[HttpGet]</code>... nên linh hoạt hơn.
+                </p>
+                <a class="btn btn-primary" href="/attribute">Mở demo Attribute Routing</a>
+            </div>
+        </div>
+    </div>
+</div>
